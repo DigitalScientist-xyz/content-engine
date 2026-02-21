@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="{{LANG}}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{TITLE}}</title>
+  <style>
+    :root {
+      --brand-red: #BA2129;
+      --brand-red-dark: #7A2E38;
+      --brand-orange: #E25D34;
+      --brand-orange-muted: #F7931E;
+      --text-dark: #1a1a1a;
+      --text-muted: #4a5568;
+      --bg-light: #f8f6f3;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 11pt;
+      line-height: 1.5;
+      color: var(--text-dark);
+      margin: 0;
+      padding: 0;
+      background: #fff;
+    }
+    .cover {
+      background: var(--brand-red);
+      color: #fff;
+      padding: 48px 50px 56px;
+      text-align: center;
+      margin-bottom: 0;
+    }
+    .cover .cover-logo {
+      max-width: 200px;
+      height: auto;
+      margin-bottom: 24px;
+      display: inline-block;
+    }
+    .cover h1 {
+      font-size: 22pt;
+      font-weight: 700;
+      margin: 0 0 12px 0;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+    .cover .subtitle {
+      font-size: 12pt;
+      color: rgba(255,255,255,0.9);
+      margin: 0;
+    }
+    .main-body { padding: 40px 50px 48px; background: #fff; color: var(--text-dark); }
+    .section {
+      margin-bottom: 28px;
+      page-break-inside: avoid;
+    }
+    .section h2 {
+      font-size: 14pt;
+      font-weight: 700;
+      margin: 0 0 12px 0;
+      color: var(--text-dark);
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 6px;
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    }
+    .section h3 {
+      font-size: 12pt;
+      font-weight: 600;
+      margin: 12px 0 6px 0;
+      color: var(--text-dark);
+    }
+    .section p { margin: 0 0 10px 0; color: var(--text-dark); }
+    .section ul { margin: 0 0 12px 0; padding-left: 22px; }
+    .section li {
+      margin-bottom: 6px;
+      color: var(--text-dark);
+    }
+    .section li::marker { color: var(--text-muted); }
+    .cta {
+      background: var(--bg-light);
+      border-left: 4px solid #cbd5e1;
+      padding: 20px 20px 20px 24px;
+      margin-top: 24px;
+      border-radius: 0 6px 6px 0;
+    }
+    .cta h2 { border-bottom-color: #e2e8f0; }
+    @media print {
+      body { padding: 0; }
+      .main-body { padding: 24px 28px; }
+      .section { page-break-inside: avoid; }
+      .cover { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <div id="cover" class="cover">
+    {{LOGO_IMG}}
+    <h1>{{COVER_TITLE}}</h1>
+    <p class="subtitle">{{COVER_SUBTITLE}}</p>
+  </div>
+  <div class="main-body">
+    {{PROBLEM_SECTION}}
+    {{SOLUTION_SECTION}}
+    {{WHAT_YOU_GET_SECTION}}
+    {{FAQ_SECTION}}
+    {{CTA_SECTION}}
+    {{EXTRA_SECTIONS_HTML}}
+  </div>
+</body>
+</html>
