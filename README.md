@@ -65,7 +65,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## User flow (single page `/`)
 
-1. **Course URL** – Default: `https://lindenhaeghe.nl/pensioen`
+1. **Source** – Choose a preset course or enter a custom URL. Default preset: `https://lindenhaeghe.nl/beleggen/e-learning-mifid-ii-esma-module-adviseren-beleggen-standaard`
 2. **Template** – Lead magnet (2 p), Product deep-dive (4 p), or Update explainer (3 p)
 3. **Extract course data** – Calls Python service, shows extracted JSON
 4. **Generate whitepaper content** – OpenAI produces Markdown + visual layout spec (sections, suggested icons, callouts)
