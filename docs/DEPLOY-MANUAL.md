@@ -175,15 +175,80 @@ pm2 restart content-engine
 
 ## 8. Later: deploy updates manually
 
+**Live server mapping (use the right names so you update the correct site):**
+
+| What | PM2 process name | Restart when |
+|------|------------------|--------------|
+| **Main site** (Next.js) | `whitepaper-factory` | You change app code, run deploy below |
+| **Python extractor** | `whitepaper-extractor` | You change `python-service/` or deps |
+
+On the current live server the app directory may be `/var/www/lindenhaeghe` (or `/var/www/whitepaper-factory`). Use the directory where this repo is actually cloned.
+
 After you change code and push to GitHub:
 
 ```bash
+# Replace with your actual app directory if different (e.g. /var/www/lindenhaeghe)
 cd /var/www/content-engine
 git pull origin main
 npm ci
 npm run build
-pm2 restart content-engine
+pm2 restart whitepaper-factory
 ```
+
+If you changed the Python extractor:
+
+```bash
+pm2 restart whitepaper-extractor
+```
+
+---
+
+## 9. Deploy to https://whitepaper.troycollins.nl/ (live site)
+
+The live site pulls from the **lindenhaeghe** repo. Your edits are in **content-engine**. To get updates live you must either push content-engine → lindenhaeghe, or pull from content-engine on the server.
+
+**Option A – Push from this repo (content-engine) to lindenhaeghe, then deploy on server**
+
+Run once locally (in content-engine) to add the live repo as a remote and push:
+
+```bash
+cd /Users/troy/Documents/Apps/content-engine
+git remote add lindenhaeghe https://github.com/DigitalScientist-xyz/lindenhaeghe.git
+git push lindenhaeghe main
+```
+
+If `lindenhaeghe` remote already exists, just run:
+
+```bash
+git push lindenhaeghe main
+```
+
+Then on the **server** (SSH):
+
+```bash
+cd /var/www/lindenhaeghe
+git pull origin main
+npm ci
+npm run build
+pm2 restart whitepaper-factory
+```
+
+**Option B – On server only: pull from content-engine**
+
+On the **server** (SSH), pull from content-engine instead of lindenhaeghe:
+
+```bash
+cd /var/www/lindenhaeghe
+git remote add content-engine https://github.com/DigitalScientist-xyz/content-engine.git
+git fetch content-engine
+git checkout main
+git reset --hard content-engine/main
+npm ci
+npm run build
+pm2 restart whitepaper-factory
+```
+
+Later deploys (Option B): `git fetch content-engine && git reset --hard content-engine/main` then `npm ci && npm run build && pm2 restart whitepaper-factory`.
 
 ---
 
