@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Whitepaper Factory",
-  description: "Generate marketing whitepapers from course pages",
+  title: "Content engine for certify360",
+  description: "Structured content generation for Certify360",
 };
 
 export default function RootLayout({
