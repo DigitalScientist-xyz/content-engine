@@ -34,7 +34,7 @@ Required in `.env.local`:
 
 ### 1. Start the Python extractor
 
-From the **project root** (`whitepaper-factory/`):
+From the **project root** (`content-engine/`):
 
 ```bash
 cd python-service
