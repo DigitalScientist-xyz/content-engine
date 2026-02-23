@@ -1,4 +1,4 @@
-# Whitepaper Factory
+# Content Engine
 
 Template-driven POC that generates marketing whitepapers from a Lindenhaeghe course page URL. Reduces workload for marketing and graphic designers by using a fixed whitepaper template.
 
